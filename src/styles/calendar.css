@@ -1,0 +1,229 @@
+/**
+ * Estilos para la Cuadrícula del Calendario Mensual Interactivo.
+ * Cumple con el Principio II (Estética Apple) y el Principio IV (Lunes a Domingo en español).
+ */
+
+.ios-calendar-card {
+  background: var(--ios-card-bg);
+  backdrop-filter: var(--ios-blur-deep);
+  -webkit-backdrop-filter: var(--ios-blur-deep);
+  border: 1px solid var(--ios-card-border);
+  border-radius: var(--radius-xl);
+  padding: 20px 16px 18px 16px;
+  box-shadow: var(--ios-shadow-widget);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cabecera del Calendario con Navegación */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.calendar-month-title {
+  font-family: var(--font-family-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  letter-spacing: -0.3px;
+  text-transform: capitalize;
+}
+
+.calendar-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calendar-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ios-btn-secondary-bg);
+  color: var(--ios-btn-secondary-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.calendar-nav-btn:active {
+  transform: scale(0.9);
+  opacity: 0.75;
+}
+
+/* Fila de Días de la Semana (L a D) */
+.calendar-weekdays-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px; /* Debe coincidir con el gap del grid para que cada palabra quede perfectamente centrada sobre su columna */
+  text-align: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ios-separator);
+}
+
+.calendar-weekday-col {
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ios-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Cuadrícula de Celdas de Días */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Celda de Día */
+.calendar-day-cell {
+  position: relative;
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 2px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+  user-select: none;
+}
+
+.calendar-day-cell:active {
+  transform: scale(0.92);
+  background: var(--ios-btn-secondary-bg);
+}
+
+/* Días de otros meses */
+.calendar-day-cell.other-month {
+  opacity: 0.32;
+}
+
+.day-number-text {
+  font-family: var(--font-family-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Día de hoy: Destacado con gris muy oscuro sofisticado (no negro puro #000000 ni azul turno N) */
+.calendar-day-cell.is-today .day-number-text {
+  background: var(--color-today-bg, #2C2D30);
+  color: var(--color-today-text, #FFFFFF);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+/* Día seleccionado con contorno neutral elegante */
+.calendar-day-cell.is-selected {
+  border-color: rgba(44, 45, 48, 0.35);
+  background: rgba(44, 45, 48, 0.06);
+}
+
+:root[data-theme="dark"] .calendar-day-cell.is-selected {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Chip/Insignia de Turno en la Celda (Píldoras centradas con altura uniforme) */
+.shift-cell-chip {
+  width: 26px;
+  height: 19px;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-display);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  line-height: 1;
+  color: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.shift-cell-chip.shift-M {
+  background: var(--color-shift-m);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.shift-cell-chip.shift-T {
+  background: var(--color-shift-t);
+}
+
+.shift-cell-chip.shift-N {
+  background: var(--color-shift-n);
+}
+
+.shift-cell-chip.shift-D {
+  background: var(--color-shift-d);
+}
+
+/* Leyenda de Turnos Inferior: Palabras y Chips perfectamente centrados */
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ios-separator);
+  margin-top: 6px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--ios-text-secondary);
+  line-height: 1;
+}
+
+.legend-item span:not(.legend-chip) {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(1px); /* Ajuste milimétrico para alinear la altura x de Dongle al centro del chip */
+}
+
+.legend-chip {
+  width: 22px;
+  height: 19px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.74rem;
+  margin-top: 0 !important;
+  flex-shrink: 0;
+}

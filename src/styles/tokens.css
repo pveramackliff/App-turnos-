@@ -1,0 +1,163 @@
+/**
+ * Design Tokens del Sistema de Diseño Apple/iOS para Kanki
+ * Cumple con el Principio II de la Constitución: Glassmorphism, desenfoque profundo,
+ * sombras multicapa, esquinas redondeadas continuas y curvas de transición fluidas.
+ */
+
+:root {
+  /* Tipografía Google Fonts: Alata (Display) & Dongle (Cuerpo y Contrastes 300/400/700) */
+  --font-family-display: 'Alata', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-body: 'Dongle', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-system: 'Dongle', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Paleta Base Light Mode */
+  --ios-bg-canvas: #F2F2F7;
+  --ios-card-bg: rgba(255, 255, 255, 0.88);
+  --ios-card-bg-solid: #FFFFFF;
+  --ios-card-border: rgba(0, 0, 0, 0.05);
+  --ios-text-primary: #1C1C1E;
+  --ios-text-secondary: #6B7280;
+  --ios-text-tertiary: #9CA3AF;
+  --ios-separator: rgba(60, 60, 67, 0.12);
+
+  /* Sombras y Elevación Ambientales iOS */
+  --ios-shadow-widget: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+  --ios-shadow-card: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --ios-shadow-modal: 0 16px 48px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Geometría y Radios Continuos (Squircles) */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Filtros de Desenfoque y Vidrio Esmerilado (Glassmorphism) */
+  --ios-blur-deep: blur(24px) saturate(190%);
+  --ios-blur-subtle: blur(12px) saturate(160%);
+
+  /* Curvas y Transiciones Suaves iOS */
+  --ease-ios-spring: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-ios-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.18s var(--ease-ios-spring);
+  --transition-normal: 0.3s var(--ease-ios-spring);
+  --transition-slow: 0.45s var(--ease-ios-spring);
+
+  /* Paleta de Destaque Daisy Baby (Sin Rosa/Blush) */
+  /* Coral: #ed6956 | Yellow: #fbbd4c | Blue: #91adc6 | Mint: #97c0c0 */
+  --color-shift-m: #fbbd4c; /* Mañana - Yellow */
+  --bg-shift-m: rgba(251, 189, 76, 0.22);
+  --border-shift-m: rgba(251, 189, 76, 0.45);
+  --color-shift-m-contrast: #6e4b00;
+
+  --color-shift-t: #ed6956; /* Tarde - Coral */
+  --bg-shift-t: rgba(237, 105, 86, 0.20);
+  --border-shift-t: rgba(237, 105, 86, 0.45);
+  --color-shift-t-contrast: #ffffff;
+
+  --color-shift-n: #91adc6; /* Noche - Blue */
+  --bg-shift-n: rgba(145, 173, 198, 0.24);
+  --border-shift-n: rgba(145, 173, 198, 0.45);
+  --color-shift-n-contrast: #24415c;
+
+  --color-shift-d: #97c0c0; /* Descanso - Mint */
+  --bg-shift-d: rgba(151, 192, 192, 0.22);
+  --border-shift-d: rgba(151, 192, 192, 0.45);
+  --color-shift-d-contrast: #274c4c;
+
+  /* Estado "En el trabajo" (Indicador Activo) */
+  --color-status-active: #2ebb53;
+  --bg-status-active: rgba(46, 187, 83, 0.16);
+  --glow-status-active: 0 0 12px rgba(46, 187, 83, 0.55);
+
+  --color-status-idle: #8E8E93;
+  --bg-status-idle: rgba(142, 142, 147, 0.14);
+
+  /* Botones e Interacciones (Armonizado con Blue Daisy Baby) */
+  --ios-btn-bg: #91adc6;
+  --ios-btn-text: #FFFFFF;
+  --ios-btn-secondary-bg: rgba(145, 173, 198, 0.16);
+  --ios-btn-secondary-text: #3c6285;
+
+  /* Indicador del Día de Hoy en Calendario (Gris muy oscuro sofisticado, no negro puro) */
+  --color-today-bg: #2C2D30;
+  --color-today-text: #FFFFFF;
+}
+
+/* Soporte Nativo de Modo Oscuro Apple (Preferencia de sistema o forzado manual) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ios-bg-canvas: #000000;
+    --ios-card-bg: rgba(28, 28, 30, 0.85);
+    --ios-card-bg-solid: #1C1C1E;
+    --ios-card-border: rgba(255, 255, 255, 0.08);
+    --ios-text-primary: #FFFFFF;
+    --ios-text-secondary: #8E8E93;
+    --ios-text-tertiary: #636366;
+    --ios-separator: rgba(84, 84, 88, 0.36);
+
+    --ios-shadow-widget: 0 4px 24px -2px rgba(0, 0, 0, 0.35);
+    --ios-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+    --ios-shadow-modal: 0 16px 56px rgba(0, 0, 0, 0.6);
+
+    --bg-shift-m: rgba(251, 189, 76, 0.28);
+    --border-shift-m: rgba(251, 189, 76, 0.48);
+    --bg-shift-t: rgba(237, 105, 86, 0.28);
+    --border-shift-t: rgba(237, 105, 86, 0.48);
+    --bg-shift-n: rgba(145, 173, 198, 0.28);
+    --border-shift-n: rgba(145, 173, 198, 0.48);
+    --bg-shift-d: rgba(151, 192, 192, 0.28);
+    --border-shift-d: rgba(151, 192, 192, 0.48);
+
+    --color-shift-m-contrast: #ffd88a;
+    --color-shift-t-contrast: #ffffff;
+    --color-shift-n-contrast: #cbe0f2;
+    --color-shift-d-contrast: #c2e5e5;
+
+    --ios-btn-bg: #91adc6;
+    --ios-btn-text: #000000;
+    --ios-btn-secondary-bg: rgba(145, 173, 198, 0.22);
+    --ios-btn-secondary-text: #adc8de;
+
+    --color-today-bg: #434448;
+    --color-today-text: #FFFFFF;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ios-bg-canvas: #000000;
+  --ios-card-bg: rgba(28, 28, 30, 0.85);
+  --ios-card-bg-solid: #1C1C1E;
+  --ios-card-border: rgba(255, 255, 255, 0.08);
+  --ios-text-primary: #FFFFFF;
+  --ios-text-secondary: #8E8E93;
+  --ios-text-tertiary: #636366;
+  --ios-separator: rgba(84, 84, 88, 0.36);
+
+  --ios-shadow-widget: 0 4px 24px -2px rgba(0, 0, 0, 0.35);
+  --ios-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --ios-shadow-modal: 0 16px 56px rgba(0, 0, 0, 0.6);
+
+  --bg-shift-m: rgba(251, 189, 76, 0.28);
+  --border-shift-m: rgba(251, 189, 76, 0.48);
+  --bg-shift-t: rgba(237, 105, 86, 0.28);
+  --border-shift-t: rgba(237, 105, 86, 0.48);
+  --bg-shift-n: rgba(145, 173, 198, 0.28);
+  --border-shift-n: rgba(145, 173, 198, 0.48);
+  --bg-shift-d: rgba(151, 192, 192, 0.28);
+  --border-shift-d: rgba(151, 192, 192, 0.48);
+
+  --color-shift-m-contrast: #ffd88a;
+  --color-shift-t-contrast: #ffffff;
+  --color-shift-n-contrast: #cbe0f2;
+  --color-shift-d-contrast: #c2e5e5;
+
+  --ios-btn-bg: #91adc6;
+  --ios-btn-text: #000000;
+  --ios-btn-secondary-bg: rgba(145, 173, 198, 0.22);
+  --ios-btn-secondary-text: #adc8de;
+
+  --color-today-bg: #434448;
+  --color-today-text: #FFFFFF;
+}

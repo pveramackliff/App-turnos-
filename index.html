@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Kanki - Control de Turnos</title>
+  
+  <!-- Configuración PWA e iOS Standalone -->
+  <meta name="description" content="Rastreador de turnos de trabajo rotativos con calendario interactivo y estado en tiempo real.">
+  <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Kanki">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+  <!-- Google Fonts: Alata & Dongle -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Estilos del Sistema de Diseño iOS -->
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/widgets.css">
+  <link rel="stylesheet" href="/src/styles/calendar.css">
+</head>
+<body>
+  <div id="app" class="ios-app-container">
+    <!-- Cabecera de estado iOS -->
+    <header class="app-header">
+      <div class="header-titles">
+        <h1 class="app-title">Kanki Turnos</h1>
+      </div>
+      <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Cambiar a modo oscuro" title="Cambiar a modo oscuro">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </header>
+
+    <!-- Tarjeta Principal de Estado (Widget Hoy) -->
+    <section id="status-card-container" class="widget-section" aria-live="polite">
+      <!-- Inyectado dinámicamente por statusCard.js -->
+    </section>
+
+    <!-- Sección de Calendario Interactivo Mensual -->
+    <section id="calendar-section" class="calendar-section">
+      <!-- Inyectado dinámicamente por calendarView.js -->
+    </section>
+
+    <!-- Contenedor para Bottom Sheet de Detalle del Día -->
+    <div id="day-detail-container"></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

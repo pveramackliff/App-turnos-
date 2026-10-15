@@ -1,0 +1,372 @@
+/**
+ * Estilos para Widgets y Componentes UI Apple/iOS (Tarjeta de Hoy, Indicador en Vivo, Modal)
+ * Cumple con el Principio II de la Constitución: Estética Apple/iOS estricta.
+ */
+
+/* Tarjeta Widget Principal (Hoy) */
+.ios-widget-card {
+  position: relative;
+  background: var(--ios-card-bg);
+  backdrop-filter: var(--ios-blur-deep);
+  -webkit-backdrop-filter: var(--ios-blur-deep);
+  border: 1px solid var(--ios-card-border);
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  box-shadow: var(--ios-shadow-widget);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.ios-widget-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--widget-accent-color, var(--color-shift-t));
+  opacity: 0.85;
+}
+
+/* Fila Superior del Widget */
+.widget-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-date-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-day-name {
+  font-family: var(--font-family-body);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ios-text-primary);
+  text-transform: capitalize;
+}
+
+.widget-full-date {
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ios-text-secondary);
+}
+
+.widget-cycle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  background: var(--ios-btn-secondary-bg);
+  color: var(--ios-text-secondary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* Cuerpo Central del Widget */
+.widget-body-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.widget-shift-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  background: var(--widget-accent-color, var(--color-shift-t));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.widget-shift-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex-grow: 1;
+}
+
+.widget-shift-label {
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ios-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.widget-shift-title {
+  font-family: var(--font-family-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.widget-shift-hours {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-body);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ios-text-secondary);
+}
+
+/* Indicador en Vivo "En el Trabajo" */
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1px;
+  width: fit-content;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.live-status-pill.at-work {
+  background: var(--bg-status-active);
+  color: var(--color-status-active);
+  border: 1px solid rgba(48, 209, 88, 0.3);
+}
+
+.live-status-pill.off-work {
+  background: var(--bg-status-idle);
+  color: var(--ios-text-secondary);
+  border: 1px solid rgba(142, 142, 147, 0.2);
+}
+
+/* Punto pulsante para estado en vivo */
+.live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+  position: relative;
+}
+
+.live-status-pill.at-work .live-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  animation: iosPulse 2s infinite var(--ease-ios-spring);
+}
+
+@keyframes iosPulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.widget-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--ios-separator);
+}
+
+.widget-remaining-time {
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ios-text-secondary);
+}
+
+/* Modal Bottom Sheet para Detalle del Día */
+.ios-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.ios-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ios-bottom-sheet {
+  width: 100%;
+  max-width: 480px;
+  background: var(--ios-card-bg-solid);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: 16px 22px max(24px, env(safe-area-inset-bottom)) 22px;
+  box-shadow: var(--ios-shadow-modal);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ios-modal-backdrop.is-open .ios-bottom-sheet {
+  transform: translateY(0);
+}
+
+.sheet-grabber-bar {
+  width: 38px;
+  height: 5px;
+  background: var(--ios-text-tertiary);
+  border-radius: var(--radius-full);
+  margin: 0 auto 4px auto;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sheet-title {
+  font-family: var(--font-family-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  line-height: 1.2;
+}
+
+.sheet-subtitle {
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  color: var(--ios-text-secondary);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.sheet-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ios-btn-secondary-bg);
+  color: var(--ios-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.sheet-close-btn:active {
+  transform: scale(0.92);
+}
+
+.sheet-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.sheet-info-card {
+  background: var(--ios-bg-canvas);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sheet-info-label {
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ios-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+.sheet-info-value {
+  font-family: var(--font-family-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  line-height: 1.1;
+}
+
+/* Tarjetas de Desplazamiento desde/hacia Casa */
+.commute-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ios-bg-canvas);
+  border: 1px solid var(--ios-card-border);
+  border-radius: var(--radius-lg);
+}
+
+.commute-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ios-btn-secondary-text);
+  font-family: var(--font-family-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.commute-time {
+  font-family: var(--font-family-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--ios-text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.sheet-rest-simple-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--bg-shift-d);
+  border: 1px solid var(--border-shift-d);
+  border-radius: var(--radius-lg);
+  margin-top: 6px;
+}

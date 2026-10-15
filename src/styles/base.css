@@ -1,0 +1,138 @@
+/**
+ * Reset base, tipografía del sistema Apple y zonas seguras (Safe Area Insets)
+ * Cumple con el Principio V de la Constitución: Ergonomía Mobile-First.
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--ios-bg-canvas);
+  color: var(--ios-text-primary);
+  font-family: var(--font-family-body);
+  font-size: 18px;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-family-display);
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+
+/* Contenedor central simulando pantalla iOS nativa con Safe Area Insets */
+.ios-app-container {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Cabecera Principal */
+.app-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 4px 6px 4px;
+  text-align: center;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.theme-toggle-btn {
+  position: absolute;
+  right: 4px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ios-btn-secondary-bg);
+  color: var(--ios-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+.app-eyebrow {
+  font-family: var(--font-family-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ios-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-title {
+  font-family: var(--font-family-display);
+  font-size: 1.85rem;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--ios-text-primary);
+}
+
+/* Botón estilo píldora Apple */
+.ios-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--ios-btn-secondary-bg);
+  color: var(--ios-btn-secondary-text);
+  font-family: var(--font-family-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+  user-select: none;
+}
+
+.ios-pill-btn:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
+
+/* Utilidades generales */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

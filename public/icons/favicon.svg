@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#007AFF" />
+      <stop offset="50%" stop-color="#5856D6" />
+      <stop offset="100%" stop-color="#FF9500" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="rgba(0,0,0,0.25)" />
+    </filter>
+  </defs>
+  <!-- Fondo Squircle iOS -->
+  <rect width="512" height="512" rx="115" fill="url(#grad)" />
+  <!-- Círculo interior translúcido -->
+  <circle cx="256" cy="256" r="160" fill="rgba(255, 255, 255, 0.2)" backdrop-filter="blur(20px)" />
+  <!-- Icono de reloj / turno -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)">
+    <!-- Carátula del reloj -->
+    <circle cx="256" cy="256" r="120" />
+    <!-- Agujas -->
+    <polyline points="256 180 256 256 310 256" />
+  </g>
+  <!-- Letra K distintiva Kanki -->
+  <text x="256" y="420" font-family="-apple-system, SF Pro Display, Helvetica, sans-serif" font-size="52" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">KANKI</text>
+</svg>
